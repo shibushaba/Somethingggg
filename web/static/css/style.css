@@ -1,0 +1,35 @@
+body {
+    font-family: Arial;
+    background: #1e1e2f;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+  }
+  .container {
+    width: 500px;
+  }
+  #chatbox {
+    background: #282c34;
+    padding: 20px;
+    height: 400px;
+    overflow-y: scroll;
+    border-radius: 10px;
+  }
+  #input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+  }
+  button {
+    padding: 10px 15px;
+    border: none;
+    background: #61dafb;
+    color: #000;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
