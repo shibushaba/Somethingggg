@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎙️ Buddy Web Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎙️ Buddy Web Assistant</h1>
+        <div id="chat"></div>
+        <input type="text" id="input" placeholder="Type or speak your command...">
+        <button onclick="sendCommand()">Send</button>
+    </div>
+    <script>
+        function sendCommand() {
+            const input = document.getElementById('input');
+            const command = input.value;
+            if (!command) return;
+            addMessage("You", command);
+            fetch('/command', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ command })
+            })
+            .then(res => res.json())
+            .then(data => addMessage("Buddy", data.response));
+            input.value = "";
+        }
+
+        function addMessage(sender, text) {
+            const chat = document.getElementById('chat');
+            const msg = document.createElement('p');
+            msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+            chat.appendChild(msg);
+            chat.scrollTop = chat.scrollHeight;
+        }
+    </script>
+</body>
+</html>
